@@ -26,10 +26,10 @@ export default async function page({ params }) {
         <div className="flex flex-col p-5 w-80 lg:w-full">
           <div className="flex flex-col lg:flex-row justify-between">
             <div className="flex flex-col">
-              <strong className="font-bold text-2xl">{product.title}</strong>
+              <strong className="font-bold text-2xl justify-between">{product.title}</strong>
               <p className="font-xs">{product.category.name}</p>
             </div>
-            <p className="text-3xl">$ {product.price}</p>
+            <p className="text-2xl min-w-1/8 self-end">$ {product.price}</p>
           </div>
           <p className="my-5 text-justify text-xl">{product.description}</p>
           <AddToCartButton/>
