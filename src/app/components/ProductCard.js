@@ -15,7 +15,7 @@ function ProductCard({ product }) {
         </div>
         <div className="flex flex-col">
           <p className="self-end text-2xl pr-4">$ {product.price}</p>
-          <Link href={`product/${product.id}`} className="w-full mt-2 bg-blue-600 text-white text-center py-2 rounded hover:bg-blue-700 active:bg-blue-800">Details</Link>
+          <Link href={`/product/${product.id}`} className="w-full mt-2 bg-blue-600 text-white text-center py-2 rounded hover:bg-blue-700 active:bg-blue-800">Details</Link>
         </div>
       </div>
     </article>
