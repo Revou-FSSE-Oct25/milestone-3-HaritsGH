@@ -1,6 +1,6 @@
 # RevoShop
 
-This is an e-commerce app for my practice and assignment. You can visit the app here: https://milestone-3-haritsgh.vercel.app
+This is an e-commerce app for my practice and assignment. You can visit the app here: https://milestone3-haritsgh.vercel.app
 
 ## Overview
 
