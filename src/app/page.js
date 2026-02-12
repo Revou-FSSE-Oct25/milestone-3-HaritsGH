@@ -25,7 +25,7 @@ export default function Home() {
   // }
 
   const fetchProductsInfo = async () => {
-    const response = await fetch('https://api.escuelajs.co/api/v1/products/')
+    const response = await fetch('https://api.escuelajs.co/api/v1/products/') // https://tobys-fakestore.up.railway.app
 
     if (!response.ok) {
       throw new Error("Error fetching products.")
@@ -64,8 +64,7 @@ export default function Home() {
   // fetch product info
 
   return (
-    <div className="bg-stone-400 h-full w-full text-black flex flex-col items-center">
-      <Header/>
+    <div className="flex flex-col items-center">
       <Advertisement/>
       <div className="flex flex-row justify-center h-full">
         {/* <ProductCategorySelector 
@@ -86,7 +85,6 @@ export default function Home() {
       {/* success fetch */}
       {!loading && fetchError === '' && <ProductList products={products}/>}
       </div>
-      <Footer/>
     </div>
   );
 }

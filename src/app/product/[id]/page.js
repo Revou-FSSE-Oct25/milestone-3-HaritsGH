@@ -18,8 +18,7 @@ export default async function page({ params }) {
   const product = await getProduct(id)
 
   return (
-    <div className="bg-stone-400 h-full w-full text-black flex flex-col items-center">
-      <Header/>
+    <div className="flex flex-col items-center">
       <Link href={"/"} className="underline hover:text-blue-600 active:text-red-600 mb-2 text-xl">Browse other products</Link>
       <main className="h-full flex flex-col lg:flex-row items-center lg:items-start p-4 w-7/8 w-80 lg:w-3xl border bg-stone-300">
         <img src={product.images[0]} alt={product.title} className="w-80 h-80 aspect-square bg-gray-100 overflow-hidden object-contain"/>
@@ -35,7 +34,6 @@ export default async function page({ params }) {
           <AddToCartButton/>
         </div>
       </main>
-      <Footer/>
     </div>
   )
 }
