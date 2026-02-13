@@ -2,7 +2,7 @@
 
 This is an e-commerce app for my practice and assignment. You can visit the app here: https://milestone3-haritsgh.vercel.app
 
-**!! The website is broken !!**
+## **The website is broken**
 
 ## Overview
 
