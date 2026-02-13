@@ -1,6 +1,6 @@
 export const dynamic = "force-static"
-import Footer from "../components/Footer"
-import Header from "../components/Header"
+import Footer from "../../components/Footer"
+import Header from "../../components/Header"
 import Link from "next/link"
 
 const FAQQnA = [
@@ -23,8 +23,7 @@ async function getFAQ() {
 const FAQPage = async () => {
   const QueAns = await getFAQ();
   return (
-    <div className="bg-stone-400 h-full w-full text-black flex flex-col items-center">
-      <Header/>
+    <div className="flex flex-col items-center">
       <Link href={"/"} className="underline hover:text-blue-600 active:text-red-600 mb-2 text-xl">Browse products</Link>
       <h2 className="text-2xl my-4">Frequently Asked Questions</h2>
       <ol className="list-decimal">
@@ -36,8 +35,6 @@ const FAQPage = async () => {
           )
         )}
       </ol>
-
-      <Footer/>
     </div>
   )
 }
