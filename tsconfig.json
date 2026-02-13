@@ -30,7 +30,7 @@
     "**/*.mts",
     "**/*.ts",
     "**/*.tsx"
-  ],
+, "src/lib/auth.js", "src/proxy.js", "src/app/login/action.js", "src/app/login/page.jsx"  ],
   "exclude": [
     "node_modules"
   ]

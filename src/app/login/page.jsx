@@ -3,22 +3,14 @@
 import { useSearchParams } from "next/navigation";
 import { Suspense, useTransition } from "react";
 import { loginAction } from "./action";
-import React from "react";
-
-export default function LoginPage(){
-  return (
-    <Suspense fallback={<div>Loading...</div>}>
-      <LoginForm/>
-    </Suspense>
-  )
-}
+// import React from "react";
 
 function LoginForm() {
   const searchParams = useSearchParams();
   const callbackUrl = searchParams.get('callbackUrl') || '/dashboard';
   const [isPending, startTransition] = useTransition();
 
-  const handleLogin = (role: 'admin' | 'user') => {
+  const handleLogin = (role) => {
     startTransition(async () => {
       await loginAction(role, callbackUrl);
     });
@@ -43,5 +35,13 @@ function LoginForm() {
         </button>
       </div>
     </div>
+  )
+}
+
+export default function LoginPage(){
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <LoginForm/>
+    </Suspense>
   )
 }

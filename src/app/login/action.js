@@ -1,9 +1,9 @@
 'use server';
 
-import { login as authLogin, logout as authLogout, UserRole } from "../../lib/auth";
+import { login as authLogin, logout as authLogout } from "../../lib/auth";
 import { redirect } from "next/navigation";
 
-export async function loginAction(role: UserRole, callbackUrl: string = '/dashboard') {
+export async function loginAction(role, callbackUrl = '/dashboard') {
   console.log('Login Action triggered')
   await authLogin(role);
 

@@ -1,17 +1,17 @@
 import { NextResponse } from "next/server";
-import type { NextRequest } from "next/server";
-import { AUTH_COOKIE, User } from "./lib/auth";
+// import { NextRequest } from "next/server";
+import { AUTH_COOKIE } from "./lib/auth";
 
 const PROTECTED_ROUTES = {
   '/dashboard': ['user', 'admin'],
   '/private': ['admin']
-} as const;
+};
 
-export function proxy(request: NextRequest) {
+export function proxy(request) {
   const {pathname} = request.nextUrl;
 
   const authCookie = request.cookies.get(AUTH_COOKIE)
-  let user: User | null = null;
+  let user = null;
   if (authCookie) {
     try {
       user = JSON.parse(authCookie.value)
@@ -37,9 +37,9 @@ export function proxy(request: NextRequest) {
     }
     // RBAC (Role-Based Access Control)
 
-    const allowedRoles = PROTECTED_ROUTES[protectedRouteKey as keyof typeof PROTECTED_ROUTES]
-    if (user && !allowedRoles.includes(user.role as any)) {
-      return NextResponse.redirect(new URL('/access-denied', request.url))
+    const allowedRoles = protectedRouteKey ? PROTECTED_ROUTES[protectedRouteKey] : undefined;
+    if (user && !allowedRoles.includes(user.priviledge)) {
+      return NextResponse.redirect(new URL('/', request.url))
     }
   }
 

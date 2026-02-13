@@ -1,22 +1,20 @@
-'use server';
-
 import { cookies } from "next/headers";
 
 export const AUTH_COOKIE = 'auth_token';
 
-export type UserRole = 'admin' | 'user' | 'guest';
+// export type UserRole = 'admin' | 'user' | 'guest';
 
-export interface User {
-  id: string;
-  name: string;
-  role: UserRole;
-}
+// export interface User {
+//   id: string;
+//   name: string;
+//   role: UserRole;
+// }
 
-export async function login(role: UserRole) {
-  const user: User = {
+export async function login(role) {
+  const user = {
     id: crypto.randomUUID(),
     name: role === 'admin' ? 'admin user' : 'standard user',
-    role
+    priviledge: role
   }
   const expires = new Date(Date.now() + 1000 * 60 * 60) // will expire in 1 hour
   const cookieStore = await cookies();
@@ -40,14 +38,14 @@ export async function logout() {
   console.log('[Mock Auth] Logging out...')
 }
 
-export async function getSession(): Promise<User | null> {
+export async function getSession() {
   const cookieStore = await cookies()
   const token = cookieStore.get(AUTH_COOKIE)
 
   if (!token) return null
 
   try {
-    return JSON.parse(token.value) as User
+    return JSON.parse(token.value)
   } catch {
     return null
   }
