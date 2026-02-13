@@ -1,6 +1,6 @@
-import Header from "@/app/components/Header"
-import Footer from "@/app/components/Footer"
-import AddToCartButton from "@/app/components/AddToCartButton"
+import Header from "@/components/Header"
+import Footer from "@/components/Footer"
+import AddToCartButton from "@/components/AddToCartButton"
 import Link from "next/link"
 
 async function getProduct(id) {
