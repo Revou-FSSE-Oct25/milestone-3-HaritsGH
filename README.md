@@ -2,6 +2,8 @@
 
 This is an e-commerce app for my practice and assignment. You can visit the app here: https://milestone3-haritsgh.vercel.app
 
+**!! The website is broken !!**
+
 ## Overview
 
 An e-commerce app created with *React* and *Next.js*. This app consists only a home page and product detail pages for each item.
