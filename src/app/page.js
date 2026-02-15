@@ -1,8 +1,9 @@
 'use client';
 import { useState, useEffect } from "react";
+import Link from "next/link";
 
 export default function Home() {
   return (
-    <a href="/login">Login</a>
+    <Link href={'/login'}>Login</Link>
   );
 }

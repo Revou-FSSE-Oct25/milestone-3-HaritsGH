@@ -1,4 +1,5 @@
 import Link from "next/link";
+import AddToCartButton from "./AddToCartButton";
 
 function ProductCard({ product }) {
   // product object keys: id, title, price, images[0-2], category.name
@@ -16,8 +17,10 @@ function ProductCard({ product }) {
         <div className="flex flex-col">
           <p className="self-end text-2xl pr-4">$ {product.price}</p>
           <Link href={`/product/${product.id}`} className="w-full mt-2 bg-blue-600 text-white text-center py-2 rounded hover:bg-blue-700 active:bg-blue-800">Details</Link>
+          <AddToCartButton/>
         </div>
       </div>
+      
     </article>
   )
 }

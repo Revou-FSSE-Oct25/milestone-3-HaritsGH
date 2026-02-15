@@ -1,6 +1,6 @@
 'use server';
 
-import { login as authLogin, logout as authLogout } from "../../lib/auth";
+import { login as authLogin, logout as authLogout } from "@/lib/auth";
 import { redirect } from "next/navigation";
 
 export async function loginAction(role, callbackUrl = '/dashboard') {

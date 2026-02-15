@@ -1,13 +1,17 @@
+'use server';
+
 import { cookies } from "next/headers";
 
-export const AUTH_COOKIE = 'auth_token';
+import { AUTH_COOKIE } from "./auth-types";
+
+export {AUTH_COOKIE}
 
 // export type UserRole = 'admin' | 'user' | 'guest';
 
 // export interface User {
 //   id: string;
 //   name: string;
-//   role: UserRole;
+//   priviledge: UserRole;
 // }
 
 export async function login(role) {

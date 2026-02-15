@@ -1,6 +1,4 @@
 export const dynamic = "force-static"
-import Footer from "../../components/Footer"
-import Header from "../../components/Header"
 import Link from "next/link"
 
 const FAQQnA = [

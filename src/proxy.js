@@ -4,7 +4,7 @@ import { AUTH_COOKIE } from "./lib/auth";
 
 const PROTECTED_ROUTES = {
   '/dashboard': ['user', 'admin'],
-  '/private': ['admin']
+  '/edit': ['admin']
 };
 
 export function proxy(request) {
@@ -35,11 +35,12 @@ export function proxy(request) {
       url.searchParams.set('callbackUrl', pathname)
       return NextResponse.redirect(url)
     }
+    
     // RBAC (Role-Based Access Control)
 
     const allowedRoles = protectedRouteKey ? PROTECTED_ROUTES[protectedRouteKey] : undefined;
     if (user && !allowedRoles.includes(user.priviledge)) {
-      return NextResponse.redirect(new URL('/', request.url))
+      return NextResponse.redirect(new URL('/access-denied', request.url))
     }
   }
 

@@ -1,13 +1,13 @@
 'use client';
 
-import { useSearchParams } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { Suspense, useTransition } from "react";
 import { loginAction } from "./action";
-// import React from "react";
 
-function LoginForm() {
+function LoginPage() {
+  const router = useRouter();
   const searchParams = useSearchParams();
-  const callbackUrl = searchParams.get('callbackUrl') || '/dashboard';
+  const callbackUrl = searchParams.get('callbackUrl') || '/';
   const [isPending, startTransition] = useTransition();
 
   const handleLogin = (role) => {
@@ -38,10 +38,10 @@ function LoginForm() {
   )
 }
 
-export default function LoginPage(){
+export default function LoginPageWrapper(){
   return (
     <Suspense fallback={<div>Loading...</div>}>
-      <LoginForm/>
+      <LoginPage/>
     </Suspense>
   )
 }
