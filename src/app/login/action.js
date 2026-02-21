@@ -1,18 +1,17 @@
 'use server';
 
-import { login as authLogin, logout as authLogout } from "@/lib/auth";
+import { login, logout } from "@/lib/auth";
 import { redirect } from "next/navigation";
 
-export async function loginAction(role, callbackUrl = '/dashboard') {
-  console.log('Login Action triggered')
-  await authLogin(role);
-
-  redirect(callbackUrl);
+export async function loginAction(role, callbackUrl = '/') {
+  // console.log('Login Action triggered 99');
+  
+  await login(role);
+  redirect(callbackUrl)
 }
 
 export async function logoutAction() {
-  await authLogout();
-
-  console.log('Logout Action triggered')
-  redirect('/login')
+  await logout();
+  // console.log('Logout Action triggered 99');
+  redirect('/');
 }

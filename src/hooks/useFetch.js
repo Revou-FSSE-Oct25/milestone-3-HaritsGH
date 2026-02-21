@@ -1,9 +1,12 @@
+'use client';
+
 import { useState, useEffect } from "react";
 
 export function useFetch(url) {
+  // This hook is used to fetch data from an API Endpoint
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [errorSource, setErrorSource] = useState(null);
+  const [errorMessage, setErrorMessage] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -16,7 +19,7 @@ export function useFetch(url) {
         const result = await response.json();
         setData(result);
       } catch (errir) {
-        setErrorSource('fetching')
+        setErrorMessage('Fetch failed.')
       } finally {
         setLoading(false)
       }
@@ -25,5 +28,5 @@ export function useFetch(url) {
     fetchData();
   }, [url]);
 
-  return { data, loading, errorSource}
+  return { data, loading, errorMessage }
 }

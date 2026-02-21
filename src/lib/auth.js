@@ -1,18 +1,6 @@
-'use server';
-
 import { cookies } from "next/headers";
 
-import { AUTH_COOKIE } from "./auth-types";
-
-export {AUTH_COOKIE}
-
-// export type UserRole = 'admin' | 'user' | 'guest';
-
-// export interface User {
-//   id: string;
-//   name: string;
-//   priviledge: UserRole;
-// }
+export const AUTH_COOKIE = 'auth_token';
 
 export async function login(role) {
   const user = {
@@ -20,7 +8,8 @@ export async function login(role) {
     name: role === 'admin' ? 'admin user' : 'standard user',
     priviledge: role
   }
-  const expires = new Date(Date.now() + 1000 * 60 * 60) // will expire in 1 hour
+  const expires = new Date(Date.now() + 1000 * 60 * 10); // expires in 10 minutes
+
   const cookieStore = await cookies();
 
   cookieStore.set(AUTH_COOKIE, JSON.stringify(user), {
@@ -28,18 +17,18 @@ export async function login(role) {
     // secure: true,
     expires,
     sameSite: 'lax',
-    path: '/',
+    path: '/'
   })
 
-  console.log(`[Mock Auth] Logging in as ${role}`)
-  return user
+  // console.log(`login triggered as ${role}...`);
+  return user;
 }
 
 export async function logout() {
-  const cookieStore = await cookies();
+  const cookieStore = await cookies()
   cookieStore.delete(AUTH_COOKIE)
 
-  console.log('[Mock Auth] Logging out...')
+  // console.log(`logout triggered...`)
 }
 
 export async function getSession() {
@@ -53,6 +42,4 @@ export async function getSession() {
   } catch {
     return null
   }
-  
-  return null;
 }
