@@ -5,11 +5,16 @@ import AddToCartButton from "./AddToCartButton";
 function ProductCard({ product }) {
   // product object keys: id, title, price, images[0-2], category.name (platzi)
   // product object keys: id, title, price, image, category (tobi)
+  
+  if (!product) {
+    return null;
+  }
+  
   return (
     <article className="h-full rounded-lg border shadow-sm overflow-hidden flex flex-col bg-stone-300">
       
       <div className="aspect-square bg-gray-100">
-        <Image unoptimized src={product.image} alt="" width={500} height={500} className="object-cover w-full h-full"/>
+        <Image unoptimized src={product.image} alt={product.title || 'Product image'} width={500} height={500} className="object-cover w-full h-full"/>
       </div>
       <div className="p-4 flex flex-col flex-1 justify-between">
         <div className="flex flex-col">
